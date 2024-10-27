@@ -11,6 +11,7 @@ int sort0_1_2(int arr[], int n) {
             i++;
             start++;
         } else if (arr[i] == 2) {
+            
             swap(arr[i], arr[end]);
             end--;
         } else {
