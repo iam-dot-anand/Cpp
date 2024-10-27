@@ -10,6 +10,7 @@ void twoSum(int arr[], int n, int target){
         }
     }
 }
+
 int main(){
     int arr[] = {4,17,8,3};
     int target = 9;
