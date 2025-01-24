@@ -33,7 +33,21 @@ int getLength(Node* head){
     return count;
 }
 
-void inserAtTail(Node* &head, Node* &tail, int data){
+void insertAtHead(Node* &head, Node* &tail, int n){
+    if(head==NULL){
+        Node* newNode= new Node(n);
+        head=newNode;
+        tail=newNode;
+    }
+    else{
+        Node* newNode=new Node(n);
+        newNode->next=head;
+        head->prev=newNode;
+        head=newNode;
+    }
+}
+
+void insertAtTail(Node* &head, Node* &tail, int data){
     if(head==NULL){
         Node* newNode= new Node(data);
         head=newNode;
@@ -47,96 +61,49 @@ void inserAtTail(Node* &head, Node* &tail, int data){
     }
 }
 
-void inserAtIndex(Node* head, int index, int data){
-
-
-
-
-
-
-    // int length=getLength(head);
-    // if(head==NULL){
-    //     Node* newNode= new Node(data);
-    //     head= newNode;
-    //     tail= newNode;
-    // }
-    // else if(index==length+1){
-    //     Node* newNode= new Node(data);
-    //     newNode=tail->next;
-    //     tail=newNode;
-    // }
-    // else{
-    //     Node* newNode=new Node(data);
-    //     Node* prevNode=NULL;
-    //     Node* currNode=head;
-    //     while(index != 1){
-    //         prevNode=currNode;
-    //         currNode=currNode->next;
-    //     }
-    //     prevNode->next=newNode;
-    //     newNode->prev=prevNode;
-    //     newNode->next=currNode;
-    //     currNode->prev=newNode;
-    // }
+void insertAtPosition(Node* &head, Node* &tail, int n, int posit){
+    int length=getLength(head);
+     Node* newNode=new Node(n);
+    if(head==NULL){
+        head=newNode;
+        tail=newNode;
+    }
+    else{
+        if(posit == 1){
+        insertAtHead(head,tail,n);
+    }   
+    if(posit>length){
+        insertAtTail(head,tail,n);
+    }
+    else{
+        Node* prevNode=NULL;
+        Node* currNode=head;
+        while(posit != 1){
+            prevNode=currNode;
+            currNode=currNode->next;
+            posit--;
+        }
+        prevNode->next=newNode;
+        newNode->prev=prevNode;
+        newNode->next=currNode;
+        currNode->prev=newNode;
+    }
+    }
+    
 }
-
-// void inserAtPosi(Node* &head, Node* &tail, int position, int data) {
-//     Node* newNode = new Node(data);
-    
-//     // Insert at head
-//     if (position == 1) {
-//         newNode->next = head;
-//         if (head != NULL) {
-//             head->prev = newNode;
-//         }
-//         head = newNode;
-//         if (tail == NULL) {  // If the list was empty
-//             tail = newNode;
-//         }
-//         return;
-//     }
-    
-//     int length = getLength(head);
-    
-//     // Insert at tail (position = length + 1)
-//     if (position > length + 1) {
-//         tail->next = newNode;
-//         newNode->prev = tail;
-//         tail = newNode;
-//         return;
-//     }
-    
-//     // Insert at any other position
-//     Node* prevNode = NULL;
-//     Node* currNode = head;
-//     while (position!=1) {
-//         prevNode = currNode;
-//         currNode = currNode->next;
-//     }
-
-//     prevNode->next = newNode;
-//     newNode->prev = prevNode;
-//     newNode->next = currNode;
-    
-    // if (currNode != NULL) {
-    //     currNode->prev = newNode;
-    // } else {
-    //     tail = newNode; 
-    // }
-// }
-
 
 int main(){
     Node* head=NULL;
     Node*tail=NULL;  
     
-    inserAtTail(head, tail, 1000);
-    inserAtTail(head, tail, 2000);
-    inserAtTail(head, tail, 3000);
+    insertAtTail(head, tail, 1000);
+    insertAtTail(head, tail, 2000);
+    insertAtTail(head, tail, 3000);
     cout<<"List ";
     printLL(head);
-    inserAtPosi(head, tail, 1, 1300);
-    cout<<"Length LL "<<getLength(head)<<endl;
+    // insertAtHead(head,tail,10);
+    insertAtPosition(head, tail, 1234,1);
+    // cout<<"Length LL "<<getLength(head)<<endl;
     cout<<"List ";
     printLL(head);
     

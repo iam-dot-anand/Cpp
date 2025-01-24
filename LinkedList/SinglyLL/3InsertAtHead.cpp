@@ -53,30 +53,29 @@ int insertAtEnd(Node* &head, int data){
     return 0;
 }
 
-int insertAtInBetween(Node* head, int data, int index){
-    Node* newNode=new Node(data);
-    Node* prev=NULL;
-    Node* curr=head;
-    while(index != 1){
-        prev=head;
-        curr=curr->next;
-        index--;
-    }
-    prev->next=newNode;
-    newNode->next=curr;
-    
-}
+// int insertAtInBetween(Node* head, int data, int index){
+//     Node* newNode=new Node(data);
+//     Node* prev=NULL;
+//     Node* curr=head;
+//     while(index != 1){
+//         prev=head;
+//         curr=curr->next;
+//         index--;
+//     }
+//     prev->next=newNode;
+//     newNode->next=curr;
+// }
 
 
 int main(){
     printLL(head);
-    // inserAtHead(head, 100);
-    // inserAtHead(head, 500);
+    inserAtHead(head, 100);
+    inserAtHead(head, 500);
     insertAtEnd(head, 400);
-    insertAtEnd(head, 200);
-    inserAtHead(head, 900);
-    printLL(head);
-    insertAtInBetween(head,555,2);
+    // insertAtEnd(head, 200);
+    // inserAtHead(head, 900);
+    // printLL(head);
+    // insertAtInBetween(head,555,2);
     cout<<"Updated->";
     printLL(head);
     return 0;

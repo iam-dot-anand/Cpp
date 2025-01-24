@@ -108,6 +108,7 @@ int main(){
     second->next=third;
     third->next=fourth;
     Node* tail=fourth;
+   
 
     printLL(head);
     cout<<"LL Length is ";

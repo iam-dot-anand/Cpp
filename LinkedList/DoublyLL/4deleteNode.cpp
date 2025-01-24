@@ -130,8 +130,8 @@ int main(){
     Node*tail=NULL;  
     
     inserAtTail(head, tail, 1000);
-    // inserAtTail(head, tail, 2000);
-    // inserAtTail(head, tail, 3000);
+    inserAtTail(head, tail, 2000);
+    inserAtTail(head, tail, 3000);
     cout<<"List ";
     printLL(head);
     // inserAtPosi(head, tail, 2, 1300);

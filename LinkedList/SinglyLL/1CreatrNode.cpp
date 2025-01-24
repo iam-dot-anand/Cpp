@@ -8,11 +8,11 @@ class Node{
     Node* next;
 
     Node(){
-        cout<<"Default Constructor"<<endl;
+        // cout<<"Default Constructor"<<endl;
     }
 
     Node(int data){
-        cout<<"Parameterised Constructor"<<endl;
+        // cout<<"Parameterised Constructor"<<endl;
         this->data=data;
         this->next=NULL;
     }

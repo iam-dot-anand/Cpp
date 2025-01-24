@@ -1,32 +1,25 @@
-#include<iostream>
+#include <iostream>
 using namespace std;
 
 class Node{
     public:
     int data;
     Node* next;
-
-    Node(){
-        cout<<"Param Const"<<endl;
-    }
-
-    Node(int data){
-        cout<<"Param Const"<<endl;
-        this->data=data;
+    
+    Node(int n){
+        this->data=n;
         this->next=NULL;
+        // cout<<"P-Const "<<data;
     }
 };
-
 void printLL(Node* head){
     Node* temp=head;
     while(temp!=NULL){
-        cout<<temp->data<<",";
+        cout<<temp->data<<"->";
         temp=temp->next;
     }
-    cout<<endl;
 }
-
-int getLength(Node* head){
+int printLength(Node* head){
     Node* temp=head;
     int count=0;
     while(temp!=NULL){
@@ -34,71 +27,81 @@ int getLength(Node* head){
         temp=temp->next;
     }
     return count;
-} 
-int inserAtHead(Node* &head, int data){
-    if(head==NULL){
-        Node* newNode=new Node(data);
-        head=newNode;
-    }
-    Node* newNode=new Node(data);
-    newNode->next=head;
-    head=newNode;
-
-    return 0;
 }
-void insertAtTail(Node* &tail, int data){
-    if(tail==NULL){
-        Node* newNode=new Node(data);
+void insertAtHead(Node* &head, Node* &tail, int n){
+    if(head==NULL){
+        Node* newNode=new Node(n);
+        head=newNode;
         tail=newNode;
     }
-    Node* newNode=new Node(data);
-    tail->next=newNode;
-    tail=newNode;
+    else{
+        Node* newNode=new Node(n);
+        newNode->next=head;
+        head=newNode;
+    }
+    cout<<endl;
 }
-
-void insertAtPosi(Node* &head, Node* &tail, int data, int position){
-    if(position < 1){
-        cout<<"Can't insert, enter a valid position"<<endl;
-    }
-    int length= getLength(head);
-    if(position>length){
-        insertAtTail(tail, data);
-    }
-    else if(position == 1){
-        inserAtHead(head,data);
-    }
-    else if(position == length+1){
-        insertAtTail(tail,data);
+void insertAtTail(Node* &head, Node* &tail, int n){
+    if(head==NULL){
+        Node* newNode=new Node(n);
+        head=newNode;
+        tail=newNode;
     }
     else{
-        Node* newNode=new Node(data);
-        Node* prev= NULL;
-        Node* curr=head;
-        while(position!=1){
-            prev=curr;
-            curr=curr->next;
-            position--;
+        Node* newNode=new Node(n);
+        tail->next=newNode;
+        tail=newNode;
+    }
+    cout<<endl;
+}
+void insertAtPosit(Node* &head, Node* &tail, int n, int posit){
+    int length=printLength(head);
+    if(length <=1){
+        insertAtHead(head,tail,n);
+    }
+    if(posit>length){
+        insertAtTail(head, tail, n);
+    }
+    else{
+         Node* newNode= new Node(n);
+         Node* prev=NULL;
+         Node* curr=head;
+        while(posit!=1){
+           prev=curr;
+           curr=curr->next;
+           posit--;
         }
         prev->next=newNode;
-        newNode->next = curr;
+        newNode->next=curr;
     }
 }
-
-int main(){
-    Node* first=new Node(10);
-    Node* second=new Node(20);
-    Node* third=new Node(30);
-    Node* fourth=new Node(40);
-
-    Node* head=first;
-    first->next=second;
-    second->next=third;
-    third->next=fourth;
-    Node* tail=fourth;
-
-    printLL(head);
-    insertAtPosi(head, tail,100,15);
-    printLL(head);
+// void createTail(Node* head, Node* tail){
+//     Node* temp=head;
+//     while(temp->next=NULL){
+//         temp=temp->next;
+//     }
+//     tail=temp;
+// }
+int main() {
+//   Node* first=new Node(10);
+//   Node* second=new Node(20);
+//   Node* third=new Node(30);
+//   Node* head=first;
+//   first->next=second;
+//   second->next=third;
+//   Node* tail=third;
+   Node* head=NULL;
+   Node* tail=NULL;
+   printLL(head);
+//   insertAtHead(head,tail,50);
+//   insertAtHead(head,tail,20);
+  insertAtTail(head,tail,500);
+  insertAtTail(head,tail,600);
+  insertAtTail(head,tail,700);
+  insertAtTail(head,tail,800);
+  insertAtPosit(head,tail,111,2);   //insert at position
+  insertAtHead(head,tail,6);
+   printLL(head);
 
     return 0;
 }

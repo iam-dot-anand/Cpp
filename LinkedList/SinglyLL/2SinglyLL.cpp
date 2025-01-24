@@ -26,9 +26,11 @@ void printLL(Node* head){
         temp=temp->next;
     }
 }
-Node* head=NULL;
+// Node* head=NULL;
 
 int main(){
+    Node* first =new Node(10);
+    Node* head=first;
     printLL(head);
 
 }
