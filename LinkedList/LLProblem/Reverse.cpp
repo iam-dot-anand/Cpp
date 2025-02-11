@@ -30,19 +30,16 @@ void printLL(Node* &head){
     }
 }
 void reverseLL(Node* &head){
-    Node *prev=NULL, *curr=head, *nextNode=curr;
-    int count =0;
-    // Node* curr=head;
-    // Node* nextNode=curr;
+    Node *prev=NULL;
+    Node* curr=head;
+    Node* nextNode=curr;
     while(curr!=NULL){
-        count++;
         nextNode=curr->next;
         curr->next=prev; 
         prev=curr;
         curr=nextNode;
     } 
     head=prev;
-    cout<<"count:"<<count<<endl;
 }
 int main(){
     Node *head=NULL;
@@ -57,7 +54,6 @@ int main(){
     reverseLL(head);
     printLL(head);
 
-
-
     return 0;
 }
+

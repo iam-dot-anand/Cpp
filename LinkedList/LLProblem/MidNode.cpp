@@ -71,7 +71,6 @@ int middleNode(Node* head){
     return slow->data;
 }
 
-
 int main(){
     printLL(head);
     inserAtHead(head, 100);
