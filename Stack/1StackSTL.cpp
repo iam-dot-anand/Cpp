@@ -8,6 +8,13 @@ int main(){
     st.push(30);
     st.push(40);
     int n=st.size();
+    cout<<"Size "<<st.top();
+    while(!st.empty()){
+        cout<<st.top()<<" ";
+        st.pop();
+    }
+    cout<<endl;
+
     st.pop();
     n=st.size();
     cout<<n;

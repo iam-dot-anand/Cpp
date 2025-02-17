@@ -1,72 +1,78 @@
-#include<iostream>
+#include <iostream>
 using namespace std;
-
-class stack{
+class Stack{
     public:
     int* arr;
     int size;
-    int top;
-
-    stack(int size){
-        arr=new int[size];
-        this->size=size;
+    int top=-1;
+    
+    Stack(int n){
+        cout<<"Parameterised Constructor called:"<< n<<endl;
+        arr= new int[n];
+        this->size=n;
         this->top=-1;
     }
     void push(int data){
         if(top==size-1){
-            cout<<"Stack overflow";
-            return;
+            cout<<"stack overflow"<<endl;
         }
         else{
             top++;
             arr[top]=data;
         }
+        
     }
     void pop(){
-        if(top==-1){
-            cout<<"Stack is underflow"<<endl;
-        }
-        else{
+       if(top==-1){
+           cout<<"stack underflow"<<endl;
+       }
+       else{
             top--;
-        }
+       }
+        
     }
     bool isEmpty(){
         if(top==-1){
             return true;
         }
-        return false;
+        else{
+            return false;
+        }
     }
-    int getTop(){
+    void getTop(){
         if(top==-1){
-            cout<<"Stack is Empty"<<endl;
+            cout<<"Stack is empty"<<endl;
         }
         else{
-            return arr[top];
+            cout<<"Get Top->"<<arr[top];
         }
     }
-    int  getSize(){
+    int getSize(){
         return top+1;
     }
-
     void print(){
-        cout<<"Top: "<<getTop()<<endl;
-        cout<<"Stack: ";
+        cout<<"top:"<<arr[top]<<" at index "<<top<<endl;
         for(int i=0; i<getSize(); i++){
-            cout<<arr[i]<<" ";
+            cout<<"->"<<arr[i];
         }
         cout<<endl;
     }
 };
-int main(){
-    stack st(5);
+
+int main() {
+    Stack st(5);
     st.push(10);
+    st.print();
     st.push(20);
     st.push(30);
+    
+    
     st.print();
-    cout<<"Size: "<<st.getSize();
-    cout<<st.isEmpty()<<endl;
-    st.pop();
-    st.pop();
     st.pop();
     st.print();
+    
+    st.getTop();
+    cout<<st.isEmpty();
+
+    return 0;
 }
